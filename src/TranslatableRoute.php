@@ -23,6 +23,7 @@ class TranslatableRoute
 
     public function GetDefaultResourceRoutes($route) {
         $index = (trans('TranslatableRoute::routes.index') === 'TranslatableRoute::routes.index') ? '' : trans('TranslatableRoute::routes.index');
+        $name = Str::singular(Str::afterLast($route, '.'));
         return [
             'store' => [
                 'type' => 'post',
@@ -38,19 +39,19 @@ class TranslatableRoute
             ],
             'update' => [
                 'type' => 'put',
-                'name' => '{'.$route.'}'
+                'name' => '{'.$name.'}'
             ],
             'show' => [
                 'type' => 'get',
-                'name' => '{'.$route.'}'
+                'name' => '{'.$name.'}'
             ],
             'destroy' => [
                 'type' => 'delete',
-                'name' => '{'.$route.'}'
+                'name' => '{'.$name.'}'
             ],
             'edit' => [
                 'type' => 'get',
-                'name' => '{'.$route.'}/'.trans('TranslatableRoute::routes.edit')
+                'name' => '{'.$name.'}/'.trans('TranslatableRoute::routes.edit')
             ]
         ];
     }
