@@ -11,6 +11,9 @@ class TranslatableRoute
     {
         $routes = $this->GetDefaultResourceRoutes($name);
         foreach($routes as $method => $options) {
+            if (in_array($method, $except)) {
+                continue;
+            }
             $this->GetRoute($name, $controller, $method, $options['type'], $options['name'], $translation);
         }
     }
